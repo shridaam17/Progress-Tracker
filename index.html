@@ -7,6 +7,53 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>Leetcode Progress Tracker</header>
+    <p>Track your progress</p>
+    <section class="stats">
+        <div class="stat-card">
+            <h2>Total Solved</h2>
+            <p id="total-solved">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Easy</h2>
+            <p id="easy-solved">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Medium Solved</h2>
+            <p id="medium-solved">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Hard Solved</h2>
+            <p id="hard-solved">0</p>
+        </div>
+    </section>
+    <section class="controls">
+        <input type="text" id="search-input" placeholder="Search problems......">
+        <select id="difficulty-filter">
+            <option value="All">All</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+        <select id="topic-filter">
+            <option value="all">All Topics</option>
+            <option value="Array">Array</option>
+            <option value="String">String</option>
+            <option value="Stack">Stack</option>
+            <option value="Tree">Tree</option>
+            <option value="Graph">Graph</option>
+        </select>
+    </section>
+    <section class="problems-section">
+
+        <h2>Problems</h2>
+
+        <div id="problem-list">
+        <!-- Problems will be created by JavaScript -->
+        </div>
+
+    </section>
+    
     <script src="script.js"></script>
 </body>
 </html>
