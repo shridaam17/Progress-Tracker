@@ -40,3 +40,16 @@ const problems=[
         solved: false
     }
 ];
+const problemList= document.getElementById("problem-list");
+function renderProblems{
+    problems.forEach(function(problems){
+        const card=document.createElement("div");
+        card.classList.add("problem-list");
+        const title=document.createElement("h3");
+        title.textContent=problems.title;
+        card.append(title);
+        problemList.append(card);
+    });
+
+}
+renderProblems();
