@@ -48,7 +48,19 @@ function renderProblems{
         const title=document.createElement("h3");
         title.textContent=problems.title;
         card.append(title);
+        const difficulty=document.createElement("span");
+        difficulty.textContent=problemList.difficulty;
+        card.append(difficulty);
+        const topic=document.createElement("span");
+        topic.textContent=problemList.topic;
+        card.append(topic);
+        const status=document.createElement("span");
+        if(problems.status)
+            status.textContent="Solved";
+        else status.textContent="Not Solved";
+        card.append(status);
         problemList.append(card);
+
     });
 
 }
