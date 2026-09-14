@@ -177,6 +177,9 @@ header p {
     font-size: 14px;
     color: #a0a0a0;
 }
+.problem-card .topic {
+    color: #78b98d;
+}
 .problem-card .easy {
     color: #2db55d;
 }

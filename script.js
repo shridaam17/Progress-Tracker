@@ -40,6 +40,15 @@ const problems=[
         solved: false
     }
 ];
+const savedProblems = localStorage.getItem("problems");
+
+if (savedProblems) {
+    problems.splice(0, problems.length, ...JSON.parse(savedProblems));
+}
+
+function saveProblems() {
+    localStorage.setItem("problems", JSON.stringify(problems));
+}
 const searchInput = document.getElementById("search-input");
 const problemList= document.getElementById("problem-list");
 const difficultyFilter = document.getElementById("difficulty-filter");
@@ -98,6 +107,9 @@ addProblemBtn.addEventListener("click",function(){
         solved:false
     };
     problems.push(newProblem);
+    saveProblems();
+
+
     problemTitle.value = "";
     problemTopic.value = "";
     selectedProblemDifficulty = "";
@@ -138,6 +150,7 @@ function renderProblems(problemArray){
 
         const topic=document.createElement("span");
         topic.textContent=problem.topic;
+        topic.classList.add("topic");
         card.append(topic);
         const solved=document.createElement("span");
         if(problem.solved){
@@ -158,6 +171,7 @@ function renderProblems(problemArray){
                 solved.classList.remove("solved");
                 solved.classList.add("unsolved");
             }
+            saveProblems();
         });
         
         const deleteButton = document.createElement("button");
@@ -172,7 +186,7 @@ function renderProblems(problemArray){
         });
 
         problems.splice(index, 1);
-
+        saveProblems();
         applyFilters();
 
         });
