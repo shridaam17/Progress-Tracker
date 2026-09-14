@@ -161,3 +161,120 @@ header p {
     accent-color: #2db55d;
     cursor: pointer;
 }
+
+.difficulty-btn.selected {
+    border-color: #2db55d;
+    background: #1f3a29;
+    color: #2db55d;
+}
+
+.add-problem {
+    display: none;
+
+    width: 70%;
+    margin: 20px auto 30px;
+
+    flex-direction: column;
+    gap: 15px;
+
+    background: #282828;
+    padding: 20px;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+}
+#add-problem-btn {
+    align-self: center;
+
+    padding: 11px 28px;
+
+    border: 1px solid #2db55d;
+    border-radius: 7px;
+
+    background: #2db55d;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#add-problem-btn:hover {
+    background: #249b4f;
+    border-color: #249b4f;
+}
+
+#add-problem-btn:active {
+    background: #1f7f42;
+    border-color: #1f7f42;
+}
+
+.add-problem input,
+.add-problem select {
+    padding: 10px;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+
+    background: #1f1f1f;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.difficulty-options,
+.topic-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.difficulty-options span,
+.topic-option span {
+    width: 90px;
+    color: #a0a0a0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.difficulty-btn {
+    padding: 8px 18px;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+
+    background: #1f1f1f;
+    color: #ffffff;
+
+    cursor: pointer;
+}
+
+.difficulty-btn:hover {
+    border-color: #2db55d;
+}
+
+.difficulty-btn.selected {
+    border-color: #2db55d;
+    background: #1f3a29;
+    color: #2db55d;
+}
+#show-add-problem {
+    padding: 10px 16px;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+
+    background: #282828;
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#show-add-problem:hover {
+    border-color: #2db55d;
+    color: #2db55d;
+}
+
+#show-add-problem:active {
+    background: #1f3a29;
+}

@@ -45,6 +45,77 @@ const problemList= document.getElementById("problem-list");
 const difficultyFilter = document.getElementById("difficulty-filter");
 const topicFilter = document.getElementById("topic-filter");
 
+const showAddProblem = document.getElementById("show-add-problem");
+const addProblemSection = document.getElementById("add-problem-section");
+
+showAddProblem.addEventListener("click", function() {
+
+    if (addProblemSection.style.display === "flex") {
+        addProblemSection.style.display = "none";
+    }
+    else {
+        addProblemSection.style.display = "flex";
+    }
+});
+
+
+const problemTitle = document.getElementById("problem-title");
+const difficultyButtons = document.querySelectorAll(".difficulty-btn");
+let selectedProblemDifficulty = "";
+
+const problemTopic = document.getElementById("problem-topic");
+const addProblemBtn = document.getElementById("add-problem-btn");
+
+difficultyButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        difficultyButtons.forEach(function(btn) {
+            btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+        selectedProblemDifficulty = button.value;
+    });
+
+});
+
+
+addProblemBtn.addEventListener("click",function(){
+    if (
+        problemTitle.value.trim() === "" ||
+        selectedProblemDifficulty === "" ||
+        problemTopic.value === ""
+    ) {
+        alert("Please fill all fields");
+        return;
+    }
+    const newProblem ={
+        id:problems.length +1,
+        title: problemTitle.value,
+        difficulty: selectedProblemDifficulty,
+        topic: problemTopic.value,
+        solved:false
+    };
+    problems.push(newProblem);
+    problemTitle.value = "";
+    problemTopic.value = "";
+    selectedProblemDifficulty = "";
+
+    difficultyButtons.forEach(function(button) {
+        button.classList.remove("selected");
+    });
+
+    problemTopic.value = "Array";
+
+    searchInput.value = "";
+    difficultyFilter.value = "All";
+    topicFilter.value = "all";
+
+    applyFilters();
+});
+
+
 
 function renderProblems(problemArray){
     problemArray.forEach(function(problem){

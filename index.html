@@ -31,6 +31,8 @@
     </section>
     <section class="controls">
         <input type="text" id="search-input" placeholder="Search problems......">
+        <button id="show-add-problem">+</button>
+
         <select id="difficulty-filter">
             <option value="All">All</option>
             <option value="Easy">Easy</option>
@@ -47,6 +49,35 @@
             <option value="Tree">Tree</option>
             <option value="Graph">Graph</option>
         </select>
+    </section>
+
+
+    <section class="add-problem" id="add-problem-section">
+
+        <input type="text" id="problem-title" placeholder="Problem name">
+        <div class="difficulty-options">
+            <span>Difficulty</span>
+        
+            <button type="button" class="difficulty-btn" value="Easy">Easy</button>
+            <button type="button" class="difficulty-btn" value="Medium">Medium</button>
+            <button type="button" class="difficulty-btn" value="Hard">Hard</button>
+        </div>
+
+        <div class="topic-option">
+            <span>Topic</span>
+                
+            <select id="problem-topic">
+                <option value="" selected disabled>Select Topic</option>
+                <option value="Array">Array</option>
+                <option value="String">String</option>
+                <option value="Binary Search">Binary Search</option>
+                <option value="Linked List">Linked List</option>
+                <option value="Stack">Stack</option>
+                <option value="Tree">Tree</option>
+                <option value="Graph">Graph</option>
+            </select>
+        </div>
+        <button id="add-problem-btn">Add Problem</button>
     </section>
     <section class="problems-section">
         <div class="problem-header">
