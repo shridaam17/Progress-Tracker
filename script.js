@@ -43,8 +43,15 @@ const problems=[
 const problemList= document.getElementById("problem-list");
 function renderProblems(){
     problems.forEach(function(problem){
+        const checkbox=document.createElement("input");
+        checkbox.type="checkbox";
+        checkbox.checked=problem.solved;
+        
+
         const card=document.createElement("div");
         card.classList.add("problem-card");
+        card.append(checkbox);
+        
         const title=document.createElement("h3");
         title.textContent=problem.title;
         card.append(title);
@@ -63,6 +70,21 @@ function renderProblems(){
         else solved.textContent="Not Solved";
         solved.classList.add(problem.solved? "solved":"unsolved");
         card.append(solved);
+        checkbox.addEventListener("change",function(){
+            problem.solved=checkbox.checked;
+            if(problem.solved){
+                solved.textContent="Solved";
+                solved.classList.remove("unsolved");
+                solved.classList.add("solved");
+            }
+            else{
+                solved.textContent="Not Solved";
+                solved.classList.remove("solved");
+                solved.classList.add("unsolved");
+            }
+        });
+        
+        
         problemList.append(card);
 
     });
