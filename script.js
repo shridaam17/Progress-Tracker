@@ -40,9 +40,14 @@ const problems=[
         solved: false
     }
 ];
+const searchInput = document.getElementById("search-input");
 const problemList= document.getElementById("problem-list");
-function renderProblems(){
-    problems.forEach(function(problem){
+const difficultyFilter = document.getElementById("difficulty-filter");
+const topicFilter = document.getElementById("topic-filter");
+
+
+function renderProblems(problemArray){
+    problemArray.forEach(function(problem){
         const checkbox=document.createElement("input");
         checkbox.type="checkbox";
         checkbox.checked=problem.solved;
@@ -90,4 +95,55 @@ function renderProblems(){
     });
 
 }
-renderProblems();
+renderProblems(problems);
+function applyFilters(){
+    const searchText=searchInput.value.toLowerCase();
+    const selectedDifficulty= difficultyFilter.value;
+    const selectedTopic=topicFilter.value;
+
+
+    const filteredProblems = problems.filter(function(problem) {
+        const matchedInput=problem.title.toLowerCase().includes(searchText);
+        const matchedDifficulty= selectedDifficulty==="All" || problem.difficulty===selectedDifficulty;
+        const matchedTopic= selectedTopic==="all" || selectedTopic===problem.topic;
+        return matchedInput && matchedDifficulty && matchedTopic;
+    });
+    problemList.innerHTML="";
+    renderProblems(filteredProblems);
+}
+searchInput.addEventListener("input", function() {
+    // const searchText = searchInput.value.toLowerCase();
+
+    // const filteredProblems = problems.filter(function(problem) {
+    //     return problem.title.toLowerCase().includes(searchText);
+    // });
+
+    // problemList.innerHTML = "";
+    // renderProblems(filteredProblems);
+    applyFilters();
+});
+difficultyFilter.addEventListener("change",function(){
+    // const selectedDifficulty= difficultyFilter.value;
+    // const filteredProblems=problems.filter(function(problem){
+    //     if(selectedDifficulty==="All"){
+    //         return true;
+    //     }
+    //     return problem.difficulty===selectedDifficulty;
+
+    // });
+    // problemList.innerHTML="";
+    // renderProblems(filteredProblems);
+    applyFilters();
+});
+topicFilter.addEventListener("change",function(){
+    // const selectedTopic=topicFilter.value;
+    // const filteredProblems=problems.filter(function(problem){
+    //     if(selectedTopic==="all"){
+    //         return true;
+    //     }
+    //     return selectedTopic===problem.topic;
+    // });
+    // problemList.innerHTML="";
+    // renderProblems(filteredProblems);
+    applyFilters();
+});
