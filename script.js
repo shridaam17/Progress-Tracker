@@ -160,7 +160,22 @@ function renderProblems(problemArray){
             }
         });
         
-        
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "-";
+        deleteButton.classList.add("delete-btn");
+        card.append(deleteButton);
+        deleteButton.addEventListener("click", function() {
+
+        const index = problems.findIndex(function(item) {
+            return item.id === problem.id;
+        });
+
+        problems.splice(index, 1);
+
+        applyFilters();
+
+        });
         problemList.append(card);
 
     });

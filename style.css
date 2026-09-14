@@ -7,9 +7,26 @@
 
 body {
     font-family: "Inter", sans-serif;
-    background: #1a1a1a;
     color: #ffffff;
     padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(45, 181, 93, 0.20),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(45, 181, 93, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(45, 181, 93, 0.12),
+            transparent 35%
+        ),
+        #101410;
 }
 header {
     text-align: center;
@@ -39,13 +56,17 @@ header p {
 }
 
 .stat-card {
-    background: #282828;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid #3a3a3a;
-}
 
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
 .stat-card h2 {
     font-size: 16px;
     margin-bottom: 10px;
@@ -65,16 +86,28 @@ header p {
 .controls input,
 .controls select {
     padding: 10px;
-    border: 1px solid #3a3a3a;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
-    font-size: 14px;
-    background: #282828;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     color: #ffffff;
+    font-size: 14px;
 }
 .controls input {
     flex: 1;
 }
-
+.controls option {
+    background: #282828;
+    color: #ffffff;
+}
+.add-problem option {
+    background: #282828;
+    color: #ffffff;
+}
 .controls input::placeholder {
     color: #888888;
 }
@@ -84,14 +117,18 @@ header p {
     border-color: #2db55d;
 }
 .problems-section {
-    background: #282828;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #3a3a3a;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .problem-header {
     display: grid;
-    grid-template-columns: 30px 1fr 140px 140px 140px;
+    grid-template-columns: 30px 1fr 130px 130px 130px 70px;
     column-gap: 20px;
 
     padding: 0 20px 12px;
@@ -115,17 +152,20 @@ header p {
 }
 .problem-card {
     display: grid;
-    grid-template-columns: 30px 1fr 150px 150px 150px;
+    grid-template-columns: 30px 1fr 150px 150px 150px 70px;
     align-items: center;
     
 
     padding: 18px 20px;
     margin-bottom: 12px;
 
-    background: #1f1f1f;
-    border: 1px solid #3a3a3a;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: border-color 0.2s ease;
 }
 .problem-card h3 {
@@ -175,13 +215,17 @@ header p {
     margin: 20px auto 30px;
 
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 
-    background: #282828;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-    border: 1px solid #3a3a3a;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
+    padding: 35px 20px 20px;
 }
 #add-problem-btn {
     align-self: center;
@@ -213,19 +257,23 @@ header p {
 .add-problem input,
 .add-problem select {
     padding: 10px;
-    border: 1px solid #3a3a3a;
-    border-radius: 6px;
 
-    background: #1f1f1f;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     color: #ffffff;
     font-size: 14px;
 }
-
 .difficulty-options,
 .topic-option {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding-left: 40px;
 }
 
 .difficulty-options span,
@@ -242,12 +290,49 @@ header p {
     border: 1px solid #3a3a3a;
     border-radius: 6px;
 
-    background: #1f1f1f;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #ffffff;
 
     cursor: pointer;
 }
+.controls input,
+.controls select,
+#show-add-problem,
+.difficulty-btn,
+.add-problem select {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
 
+    background: rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: #ffffff;
+}
+.controls input,
+.controls select {
+    padding: 10px;
+}
+
+#show-add-problem {
+    padding: 10px 16px;
+}
+
+.difficulty-btn {
+    padding: 8px 18px;
+}
+
+.add-problem select {
+    padding: 8px 12px;
+}
+.controls option,
+.add-problem option {
+    background: #282828;
+    color: #ffffff;
+}
 .difficulty-btn:hover {
     border-color: #2db55d;
 }
@@ -259,17 +344,21 @@ header p {
 }
 #show-add-problem {
     padding: 10px 16px;
-    border: 1px solid #3a3a3a;
-    border-radius: 6px;
 
-    background: #282828;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+
     color: #ffffff;
-
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
 }
-
 #show-add-problem:hover {
     border-color: #2db55d;
     color: #2db55d;
@@ -277,4 +366,28 @@ header p {
 
 #show-add-problem:active {
     background: #1f3a29;
+}
+
+.delete-btn {
+    width: 28px;
+    height: 28px;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 50%;
+
+    background: #282828;
+    color: #888888;
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+.delete-btn:hover {
+    border-color: #ef4743;
+    color: #ef4743;
+}
+
+.delete-btn:active {
+    background: #3a1f1f;
 }
