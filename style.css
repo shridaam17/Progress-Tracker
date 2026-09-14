@@ -93,3 +93,45 @@ header p {
 .problems-section h2 {
     margin-bottom: 20px;
 }
+.problem-card {
+    display: grid;
+    grid-template-columns: 1fr 120px 160px 120px;
+    align-items: center;
+    
+
+    padding: 18px 20px;
+    margin-bottom: 12px;
+
+    background: #1f1f1f;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+
+    transition: border-color 0.2s ease;
+}
+.problem-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.problem-card span {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+.problem-card .easy {
+    color: #2db55d;
+}
+
+.problem-card .medium {
+    color: #f0ad4e;
+}
+
+.problem-card .hard {
+    color: #ef4743;
+}
+.problem-card .solved {
+    color: #2db55d;
+}
+
+.problem-card .unsolved {
+    color: #888888;
+}

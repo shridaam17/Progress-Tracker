@@ -7,7 +7,7 @@ const problems=[
         solved:true
     },{
         id:2,
-        title:"valid Parantheses",
+        title:"Valid Parantheses",
         difficulty:"Easy",
         topic:"Stack",
         solved:false
@@ -41,24 +41,28 @@ const problems=[
     }
 ];
 const problemList= document.getElementById("problem-list");
-function renderProblems{
-    problems.forEach(function(problems){
+function renderProblems(){
+    problems.forEach(function(problem){
         const card=document.createElement("div");
-        card.classList.add("problem-list");
+        card.classList.add("problem-card");
         const title=document.createElement("h3");
-        title.textContent=problems.title;
+        title.textContent=problem.title;
         card.append(title);
         const difficulty=document.createElement("span");
-        difficulty.textContent=problemList.difficulty;
+        difficulty.textContent=problem.difficulty;
+        difficulty.classList.add(problem.difficulty.toLowerCase());
         card.append(difficulty);
+
         const topic=document.createElement("span");
-        topic.textContent=problemList.topic;
+        topic.textContent=problem.topic;
         card.append(topic);
-        const status=document.createElement("span");
-        if(problems.status)
-            status.textContent="Solved";
-        else status.textContent="Not Solved";
-        card.append(status);
+        const solved=document.createElement("span");
+        if(problem.solved){
+            solved.textContent="Solved";
+        }
+        else solved.textContent="Not Solved";
+        solved.classList.add(problem.solved? "solved":"unsolved");
+        card.append(solved);
         problemList.append(card);
 
     });
