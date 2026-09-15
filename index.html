@@ -12,22 +12,39 @@
         <p>Track your progress</p>
     </header>
     <section class="stats">
-        <div class="stat-card">
-            <h2>Total Solved</h2>
-            <p id="total-solved">0</p>
-        </div>
-        <div class="stat-card">
+
+    <div class="total-stat">
+        <h2>Total Solved</h2>
+        <p id="total-solved">0</p>
+    </div>
+
+    <div class="difficulty-stats">
+
+        <div class="difficulty-stat">
             <h2>Easy Solved</h2>
             <p id="easy-solved">0</p>
         </div>
-        <div class="stat-card">
+
+        <div class="difficulty-stat">
             <h2>Medium Solved</h2>
             <p id="medium-solved">0</p>
         </div>
-        <div class="stat-card">
+
+        <div class="difficulty-stat">
             <h2>Hard Solved</h2>
             <p id="hard-solved">0</p>
         </div>
+
+    </div>
+    <div class="progress-info">
+        <span>Overall Progress</span>
+        <span id="progress-percent">0%</span>
+    </div>
+    
+    <div class="progress-bar">
+        <div id="progress-fill"></div>
+    </div>
+
     </section>
     <section class="controls">
         <input type="text" id="search-input" placeholder="Search problems......">
@@ -65,7 +82,7 @@
 
         <div class="topic-option">
             <span>Topic</span>
-                
+
             <select id="problem-topic">
                 <option value="" selected disabled>Select Topic</option>
                 <option value="Array">Array</option>

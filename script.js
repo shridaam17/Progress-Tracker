@@ -108,7 +108,7 @@ addProblemBtn.addEventListener("click",function(){
     };
     problems.push(newProblem);
     saveProblems();
-
+    updateProgress();
 
     problemTitle.value = "";
     problemTopic.value = "";
@@ -172,6 +172,7 @@ function renderProblems(problemArray){
                 solved.classList.add("unsolved");
             }
             saveProblems();
+            updateProgress();
         });
         
         const deleteButton = document.createElement("button");
@@ -188,6 +189,7 @@ function renderProblems(problemArray){
         problems.splice(index, 1);
         saveProblems();
         applyFilters();
+        updateProgress();
 
         });
         problemList.append(card);
@@ -196,6 +198,7 @@ function renderProblems(problemArray){
 
 }
 renderProblems(problems);
+updateProgress();
 function applyFilters(){
     const searchText=searchInput.value.toLowerCase();
     const selectedDifficulty= difficultyFilter.value;
@@ -247,3 +250,42 @@ topicFilter.addEventListener("change",function(){
     // renderProblems(filteredProblems);
     applyFilters();
 });
+function updateProgress() {
+    let totalSolved = 0;
+    let easySolved = 0;
+    let mediumSolved = 0;
+    let hardSolved = 0;
+
+    problems.forEach(function(problem) {
+        if (problem.solved) {
+            totalSolved++;
+
+            if (problem.difficulty === "Easy") {
+                easySolved++;
+            }
+            else if (problem.difficulty === "Medium") {
+                mediumSolved++;
+            }
+            else if (problem.difficulty === "Hard") {
+                hardSolved++;
+            }
+        }
+    let progressPercent = 0;
+
+    if (problems.length > 0) {
+        progressPercent = Math.round((totalSolved / problems.length) * 100);
+        }
+    document.getElementById("progress-percent").textContent =
+    progressPercent + "%";
+
+    document.getElementById("progress-fill").style.width =
+    progressPercent + "%";
+    });
+
+    document.getElementById("total-solved").textContent =
+        totalSolved + " / " + problems.length;
+
+    document.getElementById("easy-solved").textContent = easySolved;
+    document.getElementById("medium-solved").textContent = mediumSolved;
+    document.getElementById("hard-solved").textContent = hardSolved;
+}
