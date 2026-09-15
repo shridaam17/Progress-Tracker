@@ -51,7 +51,7 @@ header p {
 .stats {
     width: 70%;
     margin: 0 auto 30px;
-
+    max-width: 1000px;
     padding: 25px 30px;
 
     background: rgba(255, 255, 255, 0.06);
@@ -166,6 +166,10 @@ header p {
     border-radius: 10px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.14);
+
+    /* width: 70%;
+    max-width: 1200px;
+    margin: 0 auto; */
 }
 .problem-header {
     display: grid;
@@ -488,4 +492,76 @@ header p {
     font-size: 22px;
     font-weight: 600;
     color: #2db55d;
+}
+@media (max-width: 600px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+    .stats {
+        width: 90%;
+    }
+
+
+    .difficulty-stats {
+    gap: 30px;
+    }
+     .problem-header,
+    .problem-card {
+        grid-template-columns: 30px 1fr 80px 80px 80px 40px;
+        column-gap: 8px;
+    }
+    .problem-card {
+    padding: 14px 10px;
+    }
+    .problem-card h3 {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    .problems-section {
+    width: 90%;
+     margin: 0 auto;
+    padding: 12px;
+    }
+    .streak-info {
+        gap: 30px; 
+    }  
+
+    .streak-info h2    {
+        font-size: 1   1px;
+    }  
+
+    .streak-info p {   
+        font-size: 18px;
+    }
+    .difficulty-stat p {
+    font-size: 18px;
+    }
+    .controls {
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+    .controls input {
+    min-width: 0;
+    }
+    .add-problem {
+    width: 90%;
+    padding: 15px;
+    }
+    .difficulty-buttons {
+    flex-wrap: wrap;
+    }
+}
+@media (max-width: 400px) {
+    .problem-header,
+    .problem-card {
+        grid-template-columns: 25px 1fr 65px 65px 65px 30px;
+        column-gap: 5px;
+    }
+
+    .problem-card {
+        padding: 12px 6px;
+    }
 }
