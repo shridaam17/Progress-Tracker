@@ -470,3 +470,22 @@ header p {
 
     transition: width 0.3s ease;
 }
+.streak-info {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+.streak-info h2 {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.streak-info p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2db55d;
+}

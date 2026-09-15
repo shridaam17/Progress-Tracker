@@ -134,7 +134,12 @@ function renderProblems(problemArray){
         const checkbox=document.createElement("input");
         checkbox.type="checkbox";
         checkbox.checked=problem.solved;
-        
+        if (problem.solved) {
+            problem.solvedDate = new Date().toISOString().split("T")[0];
+        }
+        else {
+            problem.solvedDate = null;
+        }
 
         const card=document.createElement("div");
         card.classList.add("problem-card");
@@ -173,6 +178,7 @@ function renderProblems(problemArray){
             }
             saveProblems();
             updateProgress();
+            updateStreak();
         });
         
         const deleteButton = document.createElement("button");
@@ -188,9 +194,10 @@ function renderProblems(problemArray){
 
         problems.splice(index, 1);
         saveProblems();
-        applyFilters();
+        
         updateProgress();
-
+        updateStreak();
+        applyFilters();
         });
         problemList.append(card);
 
@@ -199,6 +206,7 @@ function renderProblems(problemArray){
 }
 renderProblems(problems);
 updateProgress();
+updateStreak();
 function applyFilters(){
     const searchText=searchInput.value.toLowerCase();
     const selectedDifficulty= difficultyFilter.value;
@@ -288,4 +296,52 @@ function updateProgress() {
     document.getElementById("easy-solved").textContent = easySolved;
     document.getElementById("medium-solved").textContent = mediumSolved;
     document.getElementById("hard-solved").textContent = hardSolved;
+}
+function updateStreak() {
+    const solvedDates = problems
+    .filter(function(problem) {
+        return problem.solved && problem.solvedDate;
+    })
+    .map(function(problem) {
+        return problem.solvedDate;
+    });
+    const uniqueDates = [...new Set(solvedDates)];
+    uniqueDates.sort();
+    let currentStreak=0;
+    let longestStreak=0;
+    for (let i = 0; i < uniqueDates.length; i++) {
+
+        if (i === 0) {
+            currentStreak = 1;
+        }
+        else {
+            const previousDate = new Date(uniqueDates[i - 1]);
+            const currentDate = new Date(uniqueDates[i]);
+
+            const difference =
+                (currentDate - previousDate) / (1000 * 60 * 60 * 24);
+
+            if (difference === 1) {
+                currentStreak++;
+            }
+            else {
+                currentStreak = 1;
+            }
+        }
+            if (currentStreak > longestStreak) {
+            longestStreak = currentStreak;
+        }
+
+    }
+    const today = new Date().toISOString().split("T")[0];
+    const lastSolvedDate = uniqueDates[uniqueDates.length - 1];
+
+    if (lastSolvedDate !== today) {
+        currentStreak = 0;
+    }
+    document.getElementById("current-streak").textContent =
+        currentStreak + (currentStreak === 1 ? " day" : " days");
+    
+    document.getElementById("longest-streak").textContent =
+        longestStreak + (longestStreak === 1 ? " day" : " days"); 
 }
